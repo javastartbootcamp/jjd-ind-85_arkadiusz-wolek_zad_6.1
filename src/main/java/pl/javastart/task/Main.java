@@ -8,24 +8,27 @@ public class Main {
     public static void main(String[] args) {
         int number = 0;
         Scanner scanner = new Scanner(System.in);
-        boolean vaildNumber;
-        while (number < 100 || number > 200 || number % 3 != 0) {
+        boolean validNumber = false;
+        while (!validNumber) {
             try {
-                vaildNumber = true;
+                validNumber = true;
                 System.out.println("Podaj liczbę");
                 number = scanner.nextInt();
             } catch (InputMismatchException ex) {
                 System.out.println("Podaj liczbę całkowitą");
                 scanner.nextLine();
-                vaildNumber = false;
+                validNumber = false;
             }
-            if (vaildNumber) {
+            if (validNumber) {
                 if (number < 100) {
                     System.out.println("Podana liczba jest za mała");
+                    validNumber = false;
                 } else if (number > 200) {
                     System.out.println("Podana liczba jest za duża");
+                    validNumber = false;
                 } else if (number % 3 != 0) {
                     System.out.println("Liczba nie jest podzielna przez 3");
+                    validNumber = false;
                 }
             }
         }
